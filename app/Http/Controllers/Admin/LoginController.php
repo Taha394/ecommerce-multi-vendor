@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class LoginController extends Controller
@@ -17,7 +17,7 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $remember_me = $request->has('remember_me') ? true : false;
+        $remember_me = $request->has('remember_me');
 
         if (auth()->guard('admin')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
             // notify()->success('تم الدخول بنجاح  ');
@@ -25,4 +25,11 @@ class LoginController extends Controller
         }
         return redirect()->back()->with(['error' => 'هناك خطاء في البيانات']);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('get.admin.login');
+    }
+
 }

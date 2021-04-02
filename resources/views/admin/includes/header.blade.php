@@ -30,18 +30,25 @@
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="mr-1">مرجبا
+                <span class="mr-1"> مرحبا
                   <span
                       class="user-name text-bold-700">Taha Salah</span>
                 </span>
-                            <span class="avatar avatar-online">
-                  <img  style="height: 35px;" src="" alt="avatar"><i></i></span>
+                            <span class="">
+                  <img  style="height: 25px;" src="{{asset('assets/admin/images/ico/favicon-32.png')}}" alt="avatar"><i></i></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i
-                                    class="ft-user"></i> تعديل الملف الشحصي </a>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('settings')}}"><i
+                                    class="ft-user"></i> تعديل الملف الشحصي</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=""><i class="ft-power"></i> تسجيل
-                                الخروج </a>
+                            <a class="dropdown-item" href="{{ route('logging.out') }}" onclick=" event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="ft-power"></i>{{ __('تسجيل الخروج') }}
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <form id="logout-form" action="{{ route('logging.out') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </a>
                         </div>
                     </li>
 

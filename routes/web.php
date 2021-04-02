@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('front.home');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false , 'login' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

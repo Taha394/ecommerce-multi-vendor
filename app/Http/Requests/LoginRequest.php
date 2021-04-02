@@ -35,7 +35,6 @@ class LoginRequest extends FormRequest
             'email.required' => 'البريد الالكتروني مطلوب ',
             'email.email' => 'ادخل عنوان بريد الكتروني صالح',
             'password.required' => 'كلمه المرور مطلوبه',
-
         ];
     }
 }
